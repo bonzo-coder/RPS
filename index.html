@@ -5,84 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css"> 
 </head>
+
 <body>
-    <h1>Rock, Paper, Scissors - The GAME</h1>
-    <h3> Type input to start a game (Rock, Paper, Scissors - are the options)</h3>
-    
-    <div id="gameScore">
-        <p id="compScore"></p>
+    <div class="main">
+        <p class="title">RPS - The GAME</p>
+        <p class="subtitle"> Type <em>Rock/Paper/Scissors</em> to start a game </p>
+        <div class="centerInput">
+            <input id="inputBlock" onfocus="this.value=''" type="text">
+        </div>
+        <div class="center">
+            <button id="playButton">FIGHT</button>
+        </div>
+    <div id="gameScoree">
+        <p id="gameMessage"></p>
+        <p id="gameScore"></p>
         <p id="userScore"></p>
+        <p id="finalScore"></p>
     </div>
-    <script>
-        let name = window.prompt("Rock, Paper or Scissors?: ");
-        let choose = ["Paper", "Rock", "Scissors"];
-        let computerChoice;
-        let newText;
-        let gameScore=document.querySelector("#gameScore");
-        let gameMessage="";
-        let userPoints=0;
-        let compPoints=0;
-
-        function getComputerChoice(choose) { 
-            computerChoice = choose[Math.floor(Math.random() * choose.length)];
-            console.log(computerChoice);
-            return computerChoice;
-        }
-        getComputerChoice();
-       
-        function userChoice (name) {
-            newText = (name.toUpperCase()).slice(0,1) + (name.toLowerCase()).slice(1,10);
-            console.log(newText);
-            return newText;
-        }
-        userChoice();
-      
-
-        function playRound () {
-            console.log(computerChoice);
-            console.log(newText);
-            if (computerChoice==="Paper") {
-                if (newText==="Paper"){alert("DRAW"); return "draw";}
-                else if (newText==="Scissors") {alert("You Win! Scissors beats Paper");return "win";}
-                else if (newText==="Rock"){alert("You Lose! Paper beats Rock");return "lose";}
-                else { alert("Start again")};}
-            else if (computerChoice==="Scissors") {
-                if (newText==="Paper"){alert("You Lose! Scissors beats Paper");return "lose";}
-                else if (newText==="Scissors") {alert("DRAW");return "draw";}
-                else if (newText==="Rock"){alert("You Win! Rock beats Scissors");return "win";}
-                else { alert("Start again")};}
-            else if (computerChoice==="Rock") {
-                if (newText==="Paper"){alert("You Win! Paper beats Rock");return "win";}
-                else if (newText==="Scissors") {alert("You Lose! Rock beats Scissors");return "lose";}
-                else if (newText==="Rock"){alert("DRAW");return "draw";}
-                else { alert("Start again")};
-            }
-        }
-        playRound();
-        function message (text){
-            if (text=="user"){ gameMessage=" Point for the player";}
-            else if (text=="comp"){gameMessage=" Point for the computer";}
-            else {gameMessage="Draw! No points added";}
-        }
-        function game(){
-
-            for (let i = 0; i < 5; i++) {
-            playRound();
-             if (playRound()="win"){
-                message(user);
-                userPoints=userPoints+1;
-            }
-             else if (playRound()="lose"){
-                message(comp);
-                compPoints=compPoints+1;
-            }
-             else {message(draw)}
-            
-            gameScore.textContent="Player: ";
-            }
-        }
-      
-    </script>
+    <button  id="resetButton" style="display:none" onclick="location.href='index.html';" >Reset Game</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
+
