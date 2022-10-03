@@ -37,20 +37,20 @@
             getComputerChoice();
             userChoice();
             if (computerChoice=="Paper") {
-                if (newText=="Paper"){message("DRAW");}
+                if (newText=="Paper"){message("DRAW"); i=i-1;}
                 else if (newText=="Scissors") {message("You Win! Scissors beats Paper");userPoints=userPoints+1;}
                 else if (newText=="Rock"){message("You Lose! Paper beats Rock");compPoints=compPoints+1;}
-                else { message("Start again")};}
+                else { message("Start again. Follow instructions");i=i-1;}}
             else if (computerChoice=="Scissors") {
                 if (newText=="Paper"){message("You Lose! Scissors beats Paper");compPoints=compPoints+1;}
-                else if (newText=="Scissors") {message("DRAW");}
+                else if (newText=="Scissors") {message("DRAW"); i=i-1;}
                 else if (newText=="Rock"){message("You Win! Rock beats Scissors");userPoints=userPoints+1;}
-                else { message("Start again")};}
+                else { message("Start again. Follow instructions");i=i-1;}}
             else   {
                 if (newText=="Paper"){message("You Win! Paper beats Rock");userPoints=userPoints+1;}
                 else if (newText=="Scissors") {message("You Lose! Rock beats Scissors");compPoints=compPoints+1;}
-                else if (newText=="Rock"){message("DRAW");}
-                else { message("Start again");}
+                else if (newText=="Rock"){message("DRAW"); i=i-1;}
+                else { message("Start again. Follow instructions");i=i-1;}
             }
             clean ();
             game();
