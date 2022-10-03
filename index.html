@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Rock, Paper, Scissors - The GAME</h1>
+    <h3> Type input to start a game (Rock, Paper, Scissors - are the options)</h3>
+    
+    <script>
+        let name = window.prompt("Rock, Paper or Scissors?: ");
+        let choose = ["Paper", "Rock", "Scissors"];
+        
 
+        function getComputerChoice(choose) { 
+            let computerChoice = choose[Math.floor(Math.random() * choose.length)];
+            console.log(computerChoice);
+            return computerChoice;
+        }
+        getComputerChoice();
+       
+        function userChoice (name) {
+            let newText = (name.toUpperCase()).slice(0,1) + (name.toLowerCase()).slice(1,10);
+            console.log(newText);
+            return newText;
+        }
+        userChoice();
+      
+
+        function gameWinner () {
+            console.log(computerChoice);
+            console.log(newText);
+            if (computerChoice==="Paper") {
+                if (newText==="Paper"){
+                    alert("DRAW");
+                }
+                else if (newText==="Scissors") {
+                    alert("You Win! Scissors beats Paper");
+                }
+                else if (newText==="Rock"){
+                    alert("You Lose! Paper beats Rock");
+                }
+                else { alert("Start again")};
+            }
+            else if (computerChoice==="Scissors") {
+                if (newText==="Paper"){
+                    alert("You Lose! Scissors beats Paper");
+                }
+                else if (newText==="Scissors") {
+                    alert("DRAW");
+                }
+                else if (newText==="Rock"){
+                    alert("You Win! Rock beats Scissors");
+                }
+                else { alert("Start again")};
+            }
+            else if (computerChoice==="Rock") {
+                if (newText==="Paper"){
+                    alert("You Win! Paper beats Rock");
+                }
+                else if (newText==="Scissors") {
+                    alert("You Lose! Rock beats Scissors");
+                }
+                else if (newText==="Rock"){
+                    alert("DRAW");
+                }
+                else { alert("Start again")};
+            }
+        }
+        gameWinner();
+      
+    </script>
+</body>
+</html>
