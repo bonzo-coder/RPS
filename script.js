@@ -112,10 +112,10 @@
                 else { message("Start again. Follow instructions");i=i-1;}
             }
             newText='';
-            if (compPoints==5 || userPoints==5){
-            }
-            else {
+            if (compPoints<5 && userPoints<5){
                 buttonOn();
+            }
+            else {  
             }
             scoreOfGame();
             return i;
