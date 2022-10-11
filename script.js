@@ -10,6 +10,7 @@
         const arr = ['Rock','Paper','Scissors'];
         let button;
         let j=0;
+        let elementHighlighted;
 
         function getComputerChoice() { 
             computerChoice = arr[Math.floor(Math.random() * arr.length)];
@@ -19,18 +20,36 @@
             
         function userChoice () {
             document.getElementById("bRock").addEventListener('click', function() {
+                elementHighlighted = document.getElementById("bRock");
+                elementHighlighted.classList.add("playing");
                 newText= btnRock;
                 return newText;
             });
             document.getElementById("bPaper").addEventListener('click', function() {
+                elementHighlighted = document.getElementById("bPaper");
+                elementHighlighted.classList.add("playing");
                 newText= btnPaper;
                 return newText;
             });
             document.getElementById("bScissors").addEventListener('click', function() {
+                elementHighlighted = document.getElementById("bScissors");
+                elementHighlighted.classList.add("playing");
                 newText= btnScissors;
                 return newText;
             });
-            button.classList.remove('playing');
+        }
+
+        function buttonOff () {
+            document.querySelector('#bRock').disabled = true;
+            document.querySelector('#bPaper').disabled = true;
+            document.querySelector('#bScissors').disabled = true;
+        }
+
+        function buttonOn () {
+            document.querySelector('#bRock').disabled = false;
+            document.querySelector('#bPaper').disabled = false;
+            document.querySelector('#bScissors').disabled = false;
+
         }
 
         function clickButton () {
@@ -54,39 +73,27 @@
             btnPaper = document.getElementById("bPaper").value="Paper";
             btnScissors = document.getElementById("bScissors").value="Scissors";
             userChoice();
-            document.getElementById("choiceButton").addEventListener('click', playRound);
-                   
+            document.getElementById("choiceButton").addEventListener('click', playRound);       
         }  
-
-        function transition () {
-            if (newText=='Rock'){
-                let elementHighlighted = document.getElementById("bRock");
-                elementHighlighted.classList.add("playing");
-            }
-            else if (newText=='Paper'){
-                let elementHighlighted = document.getElementById("bPaper");
-                elementHighlighted.classList.add("playing");
-            }
-            else if (newText=='Scissors'){
-                let elementHighlighted = document.getElementById("bScissors");
-                elementHighlighted.classList.add("playing");
-            }
-        }
 
         function removeTransition(e) {
             if (e.propertyName !== 'transform') return;
             e.target.classList.remove('playing');
-          }     
+        }     
             
         function message(text) {
             document.getElementById("gameMessage").innerHTML=text;
         }
 
-        function playRound () {
-            userChoice();
-            transition();
+        function endTransition() {
             const keys = Array.from(document.querySelectorAll('.key'));
             keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+        }
+
+        function playRound () {
+            userChoice();
+            buttonOff();
+            endTransition();
             getComputerChoice();
             if (computerChoice=="Paper") {
                 if (newText=="Paper"){message("DRAW"); i=i;}
@@ -104,8 +111,12 @@
                 else if (newText=="Rock"){message("DRAW"); i=i;}
                 else { message("Start again. Follow instructions");i=i-1;}
             }
-            
             newText='';
+            if (compPoints==5 || userPoints==5){
+            }
+            else {
+                buttonOn();
+            }
             scoreOfGame();
             return i;
         }
