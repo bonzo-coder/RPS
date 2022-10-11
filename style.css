@@ -10,31 +10,58 @@ body {
 }
 
 div {
+    box-sizing: border-box;
     align-items: center;
-    justify-content: space-around;
     margin: auto;
     }
 
+#bRock,
+#bPaper,
+#bScissors,
 #playButton,
 #resetButton {
-    margin: auto;
+    margin: 20px;
     background-color: #292e29; 
-    border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 16px; 
+    border: 2px solid orange;
+}
+#resetButton {
+    margin: auto;
 }
 
+.key {
+    transition: all .5s ease;
+}
+
+.playing {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+    font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: #ffc600;
+  }
+
+#choiceButton {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items:stretch;
+        margin: auto;
+}
 .center {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:stretch;
     height: 100px;
     border: 3px solid darkblue;
-    width: 30%; 
+    width: 50%; 
 }
 
 .centerInput {
